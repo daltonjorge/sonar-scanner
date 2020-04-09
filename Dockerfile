@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM alpine:3.11
 
 MAINTAINER Dalton Jorge <daltonjorge@gmail.com>
 
@@ -9,7 +9,7 @@ ENV SONAR_URL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli
 RUN set -x \
     && apk update \
     && apk upgrade \
-    && apk add --update --no-cache ca-certificates zip unzip curl sshpass \
+    && apk add --update --no-cache openjdk8-jre ca-certificates zip unzip curl sshpass \
     && echo "---> Download and install sonar-scaner" \
     && cd /opt \
     && curl -L ${SONAR_URL}/${SONAR_APP}.zip -o ${SONAR_APP}.zip \
